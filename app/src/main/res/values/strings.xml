@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">LoanCalculator</string>
+    <string name="main_activity_header">Loan Calculator</string>
+    <string name="loan_amount">Loan Amount</string>
+    <string name="loan_amount_edit_text_hint">50000</string>
+
+    <string name="term_of_loan">Term of Loan (years)</string>
+    <string name="et_term_of_loan_hint">7</string>
+
+    <string name="yearly_interest_rate">Yearly Interest Rate</string>
+    <string name="et_interest_rate_hint">7.5</string>
+
+    <string name="btn_calc">Calculate</string>
+    <string name="btn_clear">Clear</string>
+
+    <string name="tv_results">Results</string>
+    <string name="rs_monthly_payment">Monthly Payment</string>
+    <string name="rs_total_payment">Total Payment</string>
+    <string name="rs_total_interest">Total Interest</string>
+</resources>
