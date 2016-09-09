@@ -15,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
     private EditText et_loan_amount, et_term_of_loan, et_yearly_interest_rate;
     private Button btn_calc, btn_clear;
     private TextView tv_monthly_payment, tv_total_payment, tv_total_interest;
+
+    private double total;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
                     lc.setLoanAmount(loan_amount);
                     lc.setNumberOfYears(years);
                     lc.setYearlyInterestRate(yearly_interest);
+
+                    total = lc.getMonthlyPayment();
 
                     tv_monthly_payment.setText(String.valueOf(lc.getMonthlyPayment()));
                     tv_total_payment.setText(String.valueOf(lc.getTotalCostOfLoan()));
@@ -60,7 +65,13 @@ public class MainActivity extends AppCompatActivity {
                 tv_total_interest.setText("");
             }
         });
-    }
+
+        if(savedInstanceState != null){
+            total = savedInstanceState.getDouble("total");
+            Log.d("savedInstance_total", String.valueOf(total));
+        }
+        Log.d("total",String.valueOf(total));
+    }//onCreate()
 
     private void init(){
         lc = new LoanCalculator();
@@ -76,5 +87,17 @@ public class MainActivity extends AppCompatActivity {
         tv_total_interest = (TextView)findViewById(R.id.tv_rs_total_interest);
         tv_total_payment = (TextView)findViewById(R.id.tv_rs_total_payment);
 
+    }
+    @Override
+    protected void  onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        Log.d("saved","saved instance state");
+        outState.putDouble("total",total);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("onResume", "onResume()");
     }
 }
